@@ -39,7 +39,16 @@ class Exercise1 extends Controller
                         break;
                     }
                     case 'division': {
-                        $response = $request->x / $request->y;
+                        switch($request->y) {
+                            case 0: {
+                                return response()->json(['response' => 'cannot divide by zero'], 400, [], JSON_PRETTY_PRINT);
+                                break;
+                            }
+                            default: {
+                                $response = $request->x / $request->y;
+                                break;
+                            }
+                        }
                         break;
                     }
                 }
