@@ -30,7 +30,7 @@ class Exercise1 extends Controller
                         $response = $request->x + $request->y;
                         break;
                     }
-                    case 'subraction': {
+                    case 'subtraction': {
                         $response = $request->x - $request->y;
                         break;
                     }
