@@ -55,7 +55,6 @@
                                 max = response.username && response.username.Max || response.password && response.password.Max
                                 min = response.username && response.username.Min || response.password && response.password.Min
                                 confirm = response.password && response.password.Confirmed
-                                console.log(response)
                                 Swal.fire(
                                     'Please check your inputs!',
                                     required ? 'Fields cannot be blank' : max || min ? 'Minimum character of 4 maximum of 20' : confirm ? 'Passwords do not match' : 'unknown err',
