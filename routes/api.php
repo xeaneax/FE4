@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 /*
@@ -13,11 +14,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::any('exercise-1', 'Exercise1');
 Route::any('exercise-2', 'Exercise2');
 Route::any('exercise-3', 'Exercise3@index');
 Route::any('exercise-3/store', 'Exercise3@store');
+Route::any('exercise-final', 'ExerciseFinal@login');
+Route::any('exercise-final/store', 'ExerciseFinal@store');
