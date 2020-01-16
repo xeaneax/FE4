@@ -37,6 +37,8 @@
                     'url': '/api/exercise-final/store',
                     'data': $('form').serialize(),
                     'success': e => {
+                        $('form').trigger('reset')
+                        $('#username').trigger('focus')
                         Swal.fire(
                             'Success!',
                             'User successfully created.',
@@ -44,6 +46,8 @@
                         )
                     },
                     'error': e => {
+                        $('#username').trigger('focus')
+                        $('form').trigger('reset')
                         switch(e.status) {
                             case 400: {
                                 response = JSON.parse(e.responseText)
