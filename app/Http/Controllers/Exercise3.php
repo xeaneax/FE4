@@ -27,7 +27,7 @@ class Exercise3 extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make(
-            $request->all(),
+            $r = json_decode($request->getContent(), true) ?? $request->all(),
             [
                 'name' => 'required|string|min:2|max:100',
                 'address' => 'required|string|min:2|max:100',
@@ -37,11 +37,12 @@ class Exercise3 extends Controller
         );
         switch($validator->fails()) {
             case false: {
+                $r = (object) $r;
                 Student::create([
-                    'name' => ucwords($request->name),
-                    'address' => ucwords($request->address),
-                    'school' => ucwords($request->school),
-                    'mobilenumber' => $request->mobilenumber,
+                    'name' => ucwords($r->name),
+                    'address' => ucwords($r->address),
+                    'school' => ucwords($r->school),
+                    'mobilenumber' => $r->mobilenumber,
                 ]);
                 return response()->json(['response' => 'success'], 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
                 break;
