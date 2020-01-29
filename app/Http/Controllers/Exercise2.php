@@ -137,12 +137,12 @@ class Exercise2 extends Controller
                 'PlaceofBirth' => 'Koforidua',
             ],
         ];
-
-        switch(Validator::make($request->all(),['id' => 'required|numeric'])->fails()) {
+        $r = json_decode($request->getContent(), true);
+        switch(Validator::make($r, ['id' => 'required|numeric'])->fails()) {
             case false: {
-                switch(in_array($request->id, $students)) {
+                switch(@$students[@$r['id']]) {
                     case true: {
-                        $student = (object) $students[$request->id];
+                        $student = (object) @$students[@$r['id']];
                         return response()->json(
                             [
                                 'ID' => $student->ID,
