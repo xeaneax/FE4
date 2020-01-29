@@ -34,7 +34,7 @@
             $('form').on('submit', e => {
                 $.ajax({
                     'type': 'post',
-                    'url': '/api/exercise-final/store',
+                    'url': 'http://free-elective.herokuapp.com/api/jako-final/store',
                     'data': $('form').serialize(),
                     'success': e => {
                         $('form').trigger('reset')
